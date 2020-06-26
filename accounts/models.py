@@ -35,28 +35,26 @@ class UserProfile(models.Model):
     SoftwereEngg = models.BooleanField()
     
     # preffered roles
-    PrefferRoles= models.CharField(max_length=100)
+    PrefferRoles = models.CharField(max_length=100)
     # 10 skills
-    skills=models.CharField(max_length=100)
+    skills = models.CharField(max_length=100)
 
-    # radio filed
-
-    proffessional= models.ChoiceField(choices=GENDER_CHOICES, widget=forms.RadioSelect())
-    fresher=models.ChoiceField(choices=GENDER_CHOICES, widget=forms.RadioSelect())
-    student=models.ChoiceField(choices=GENDER_CHOICES, widget=forms.RadioSelect())
+    # radio field
+    CHOICES = ((0, 'Select:'), (1, 'I am a working professional'), (2, 'I am a fresher'), (3, 'I am a student'))
+    experience = models.IntegerField(choices=CHOICES, default=0)
 
     # on the web
     linkdin = models.CharField(max_length=30)
-    github=models.CharField(max_length=30)
-    weChat= models.CharField(max_length=30)
-    lineID=models.CharField(max_length=30)
-    Dribble=models.CharField(max_length=30)
-    portfolio=models.CharField(max_length=30)
+    github = models.CharField(max_length=30)
+    weChat = models.CharField(max_length=30)
+    lineID = models.CharField(max_length=30)
+    Dribble = models.CharField(max_length=30)
+    portfolio = models.CharField(max_length=30)
    
     # share profile
-    Sharecom= models.BooleanField()
+    Sharecom = models.BooleanField()
     # opportunity
-    opportunity=models.BooleanField()
+    opportunity = models.BooleanField()
     
     def __str__(self):
         return '%s' % (self.user)
