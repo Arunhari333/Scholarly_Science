@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class UserProfile(models.Model):
     user = models.OneToOneField(
         User,
-        models.CASCADE(),
+        models.CASCADE,
         blank=True,
         null=True,
     )
@@ -24,7 +24,7 @@ class UserProfile(models.Model):
     accounting = models.BooleanField()
     consulting = models.BooleanField(default=True)
     creativeDesign = models.BooleanField(default=True)
-    Engineering = models.BooleanField()
+    engineering = models.BooleanField()
     finance = models.BooleanField()
     legal = models.BooleanField(default=True)
     marketing = models.BooleanField() 
@@ -32,10 +32,10 @@ class UserProfile(models.Model):
     operations = models.BooleanField()
     research = models.BooleanField()
     SalesDevlopment = models.BooleanField()
-    SoftwereEngg = models.BooleanField()
+    SoftwareEngg = models.BooleanField()
     
     # preffered roles
-    PrefferRoles = models.CharField(max_length=100)
+    roles = models.CharField(max_length=100)
     # 10 skills
     skills = models.CharField(max_length=100)
 
@@ -48,11 +48,11 @@ class UserProfile(models.Model):
     github = models.CharField(max_length=30)
     weChat = models.CharField(max_length=30)
     lineID = models.CharField(max_length=30)
-    Dribble = models.CharField(max_length=30)
+    dribble = models.CharField(max_length=30)
     portfolio = models.CharField(max_length=30)
    
     # share profile
-    Sharecom = models.BooleanField()
+    sharecom = models.BooleanField()
     # opportunity
     opportunity = models.BooleanField()
     
