@@ -2,13 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class UserProfile(models.Model):
-    user = models.OneToOneField(
-        User,
-        models.CASCADE,
-        blank=True,
-        null=True,
-    )
+class register(models.Model):
+    user = models.ForeignKey(User)
     FirstName = models.CharField(max_length=100, default='')
     LastName = models.CharField(max_length=100, default='')
     Email = models.EmailField(blank=False)
@@ -19,21 +14,27 @@ class UserProfile(models.Model):
     Major = models.CharField(max_length=100, default='')
     StartDate = models.DateField()
     EndDate = models.DateField()
- 
+
+    def __str__(self):
+        return '%s' % (self.register)
+
     # deatail page
+
+class detail(models.Model):
+    user = models.ForeignKey(User)
     accounting = models.BooleanField()
     consulting = models.BooleanField(default=True)
     creativeDesign = models.BooleanField(default=True)
     engineering = models.BooleanField()
     finance = models.BooleanField()
     legal = models.BooleanField(default=True)
-    marketing = models.BooleanField() 
+    marketing = models.BooleanField()
     nursing = models.BooleanField()
     operations = models.BooleanField()
     research = models.BooleanField()
-    SalesDevelopment = models.BooleanField()
+    SalesDevlopment = models.BooleanField()
     SoftwareEngg = models.BooleanField()
-    
+
     # preffered roles
     roles = models.CharField(max_length=100)
     # 10 skills
@@ -50,11 +51,11 @@ class UserProfile(models.Model):
     lineID = models.CharField(max_length=30)
     dribble = models.CharField(max_length=30)
     portfolio = models.CharField(max_length=30)
-   
+
     # share profile
     sharecom = models.BooleanField()
     # opportunity
     opportunity = models.BooleanField()
-    
+
     def __str__(self):
-        return '%s' % (self.user)
+        return '%s' % (self.detail)
