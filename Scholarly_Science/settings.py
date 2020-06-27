@@ -55,7 +55,7 @@ ROOT_URLCONF = 'Scholarly_Science.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['template'],
+        'DIRS': ['Scholarly_Science/template'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
