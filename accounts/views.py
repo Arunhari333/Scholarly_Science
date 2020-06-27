@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from accounts.forms import ProfileForm1, ProfileForm2
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from formtools.wizard.views import SessionWizardView
-from accounts.models import User, UserProfile
+from accounts.models import User, register, detail
 from django.views.generic import TemplateView
 
 # Create your views here.
@@ -42,9 +41,9 @@ O = RegView()
 
 @login_required
 def Profile(request):
-    form = ProfileForm1(request.POST)
+    # form = ProfileForm1(request.POST)
     if request.user.is_authenticated:
-        if UserProfile.objects.filter(user=request.user).exists():
+        if register.objects.filter(user=request.user).exists():
             return redirect('/account/company-url/')
         else:
             if request.method == 'POST':
