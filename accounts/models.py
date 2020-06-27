@@ -3,7 +3,12 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class register(models.Model):
-    user = models.ForeignKey(User)
+    user = models.OneToOneField(
+        User,
+        models.CASCADE,
+        blank=True,
+        null=True,
+    )
     FirstName = models.CharField(max_length=100, default='')
     LastName = models.CharField(max_length=100, default='')
     Email = models.EmailField(blank=False)
@@ -16,12 +21,17 @@ class register(models.Model):
     EndDate = models.DateField()
 
     def __str__(self):
-        return '%s' % (self.register)
+        return '%s' % (self.user)
 
     # deatail page
 
 class detail(models.Model):
-    user = models.ForeignKey(User)
+    user = models.OneToOneField(
+        User,
+        models.CASCADE,
+        blank=True,
+        null=True,
+    )
     accounting = models.BooleanField()
     consulting = models.BooleanField(default=True)
     creativeDesign = models.BooleanField(default=True)
@@ -32,7 +42,7 @@ class detail(models.Model):
     nursing = models.BooleanField()
     operations = models.BooleanField()
     research = models.BooleanField()
-    SalesDevlopment = models.BooleanField()
+    SalesDevelopment = models.BooleanField()
     SoftwareEngg = models.BooleanField()
 
     # preffered roles
@@ -58,4 +68,4 @@ class detail(models.Model):
     opportunity = models.BooleanField()
 
     def __str__(self):
-        return '%s' % (self.detail)
+        return '%s' % (self.user)

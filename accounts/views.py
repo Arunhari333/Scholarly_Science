@@ -51,7 +51,7 @@ def Profile(request):
             else:
                 return O.get(request)
 
-class national_initiatives(LoginRequiredMixin, TemplateView):
+class Detail(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/detail.html'
 
     def get(self, request):
