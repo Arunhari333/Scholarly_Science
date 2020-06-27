@@ -32,7 +32,7 @@ class RegView(TemplateView):
             EndDate = form.cleaned_data['EndDate']
 
             #return redirect('/account/profile/')
-            args = {'FirstName': FirstName, 'LastName': LastName, 'Email': Email, 'Mobile': Mobile,
+            args = {'form': form, 'FirstName': FirstName, 'LastName': LastName, 'Email': Email, 'Mobile': Mobile,
                     'City': City, 'College': College, 'Degree': Degree, 'Major': Major,
                     'StartDate': StartDate, 'EndDate': EndDate}
             return render(request, self.template_name, args)
