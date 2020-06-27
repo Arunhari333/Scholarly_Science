@@ -8,6 +8,18 @@ class ProfileForm1(forms.ModelForm):
         model = register
         fields = ('FirstName', 'LastName', 'Email', 'Mobile', 'City',
                   'College', 'Degree', 'Major', 'StartDate', 'EndDate')
+        widgets = {
+            'FirstName': forms.TextInput(attrs={'class': 'form-control', 'id': 'firstname'}),
+            'LastName': forms.TextInput(attrs={'class': 'form-control', 'id': 'lastname'}),
+            'Email': forms.TextInput(attrs={'type': 'email', 'class': 'form-control', 'id': 'email'}),
+            'Mobile': forms.TextInput(attrs={'type': 'tel', 'class': 'form-control', 'id': 'phone'}),
+            'City': forms.TextInput(attrs={'class': 'form-control', 'id': 'city'}),
+            'College': forms.TextInput(attrs={'class': 'form-control', 'id': 'college'}),
+            'Degree': forms.TextInput(attrs={'class': 'form-control', 'id': 'degree'}),
+            'Major': forms.TextInput(attrs={'class': 'form-control', 'id': 'majorCon'}),
+            'StartDate': forms.TextInput(attrs={'type': 'date', 'class': 'form-control', 'id': 'sdate'}),
+            'EndDate': forms.TextInput(attrs={'type': 'date', 'class': 'form-control', 'id': 'eDate'}),
+        }
 
 class ProfileForm2(forms.ModelForm):
     class Meta:

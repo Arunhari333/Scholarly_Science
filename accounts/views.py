@@ -19,42 +19,26 @@ class RegView(TemplateView):
             post = form.save(commit=False)
             post.user = request.user
             post.save()
-
-            FirstName = form.cleaned_data['FirstName']
-            LastName = form.cleaned_data['LastName']
-            Email = form.cleaned_data['Email']
-            Mobile = form.cleaned_data['Mobile']
-            City = form.cleaned_data['City']
-            College = form.cleaned_data['College']
-            Degree = form.cleaned_data['Degree']
-            Major = form.cleaned_data['Major']
-            StartDate = form.cleaned_data['StartDate']
-            EndDate = form.cleaned_data['EndDate']
-
-            #return redirect('/account/profile/')
-            args = {'form': form, 'FirstName': FirstName, 'LastName': LastName, 'Email': Email, 'Mobile': Mobile,
-                    'City': City, 'College': College, 'Degree': Degree, 'Major': Major,
-                    'StartDate': StartDate, 'EndDate': EndDate}
-            return render(request, self.template_name, args)
+            return redirect('/account/')
 
 O = RegView()
 
 def Profile(request):
-    # form = ProfileForm1(request.POST)
     if request.user.is_authenticated:
         if register.objects.filter(user=request.user).exists():
-            # return redirect('/account/company-url/')
-            details = register.objects.get(user=request.user)
-            args = {'data': details, 'id': request.user.id}
-            return render(request, 'accounts/details.html', args)
-
+            if detail.objects.filter(user=request.user).exists():
+                return redirect('/account/company-url/')
+            else:
+                return redirect('/account/detail/')
         else:
             if request.method == 'POST':
                 return O.post(request)
             else:
                 return O.get(request)
+    else:
+        pass
 
-class Detail(LoginRequiredMixin, TemplateView):
+class Detail(TemplateView):
     template_name = 'accounts/detail.html'
 
     def get(self, request):

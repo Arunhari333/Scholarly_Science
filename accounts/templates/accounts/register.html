@@ -23,14 +23,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% load static %}
 <!-- css-->
-<link rel="stylesheet" type="text/css" href="{% static 'accounts/intlTelInput.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'accounts/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/css/intlTelInput.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}">
 
 <!-- js -->
 
-<link rel="stylesheet" type="text/css" href="{% static 'accounts/intlTelInput.js' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'accounts/intlTelInput.min.js' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'accounts/utils.js' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/js/intlTelInput.js' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/js/intlTelInput.min.js' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'accounts/js/utils.js' %}">
     
     
   </head>
@@ -83,110 +83,65 @@
         <div class="small-circle" id="circle-3"></div>
         <div class="form-container">
           <h4>Let's setup your profile first!</h4>
-          <form method='post' action='detail/'>{%csrf_token%}
+          <form method='post'>
+            {% csrf_token %}
             <div class="form-row">
               <div class="form-group col-md-5 group">
                 <label for="firstname">First Name</label>
-                <input
-                  type="text"
-                  name="firstname"
-                  class="form-control"
-                  id="firstname"
-                />
+                {{ form.FirstName }}
               </div>
               <div class="form-group col-md-2 gap"></div>
               <div class="form-group col-md-5 group">
                 <label for="lastname">Last Name</label>
-                <input
-                  type="text"
-                  name="lastname"
-                  class="form-control"
-                  id="lastname"
-                />
+                {{ form.LastName }}
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-5 group">
                 <label for="email">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  class="form-control"
-                  id="email"
-                />
+                {{ form.Email }}
               </div>
               <div class="form-group col-md-2 gap"></div>
               <div class="form-group col-md-5 group">
                 <label for="tel">Mobile Number</label><br />
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  class="form-control"
-                  size="50"
-                />
+                {{ form.Mobile }}
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-5 group">
                 <label for="city">City</label>
-                <input type="text" name="city" class="form-control" id="city" />
+                {{ form.City }}
               </div>
             </div>
             <h4 class="f-head">Education</h4>
             <div class="form-row">
               <div class="form-group col-md-10 group">
                 <label for="college">College/University</label>
-                <input
-                  type="text"
-                  name="college"
-                  class="form-control"
-                  id="college"
-                />
+                {{ form.College }}
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-5 group">
                 <label for="degree">Degree</label>
-                <input
-                  type="text"
-                  name="degree"
-                  class="form-control"
-                  id="degree"
-                />
+                {{ form.Degree }}
               </div>
               <div class="form-group col-md-2 gap"></div>
 
               <div class="form-group col-md-5 group">
                 <label for="majorCon">Major/Area of study</label>
-                <input
-                  type="text"
-                  name="field"
-                  class="form-control"
-                  id="majorCon"
-                />
+                {{ form.Major }}
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-5 group sdate">
                 <label for="sDate">Start Date</label>
-                <input
-                  type="date"
-                  name="sDate"
-                  class="form-control"
-                  id="sdate"
-                />
+                {{ form.StartDate }}
               </div>
               <div class="form-group col-md-2 gap"></div>
               <div class="form-group dateGap"></div>
               <div class="form-group col-md-5 group edate">
                 <label for="eDate">End Date</label>
-                <input
-                  type="date"
-                  name="eDate"
-                  class="form-control"
-                  id="eDate"
-                />
+                {{ form.EndDate }}
               </div>
             </div>
             <div class="form-row">
