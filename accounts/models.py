@@ -31,7 +31,7 @@ class UserProfile(models.Model):
     nursing = models.BooleanField()
     operations = models.BooleanField()
     research = models.BooleanField()
-    SalesDevlopment = models.BooleanField()
+    SalesDevelopment = models.BooleanField()
     SoftwareEngg = models.BooleanField()
     
     # preffered roles
