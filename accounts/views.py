@@ -39,12 +39,15 @@ class RegView(TemplateView):
 
 O = RegView()
 
-@login_required
 def Profile(request):
     # form = ProfileForm1(request.POST)
     if request.user.is_authenticated:
         if register.objects.filter(user=request.user).exists():
-            return redirect('/account/company-url/')
+            # return redirect('/account/company-url/')
+            details = register.objects.get(user=request.user)
+            args = {'data': details, 'id': request.user.id}
+            return render(request, 'accounts/details.html', args)
+
         else:
             if request.method == 'POST':
                 return O.post(request)
@@ -59,7 +62,6 @@ class Detail(LoginRequiredMixin, TemplateView):
         return render(request, self.template_name, {'form': form})
 
     def post(self, request):
-
         form = ProfileForm2(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
