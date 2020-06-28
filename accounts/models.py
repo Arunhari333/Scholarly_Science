@@ -12,7 +12,7 @@ class register(models.Model):
     FirstName = models.CharField(max_length=100, default='')
     LastName = models.CharField(max_length=100, default='')
     Email = models.EmailField(blank=False)
-    Mobile = models.IntegerField(default=0)
+    Mobile = models.IntegerField()
     City = models.CharField(max_length=100, default='')
     College = models.CharField(max_length=100, default='')
     Degree = models.CharField(max_length=100, default='')
@@ -50,9 +50,10 @@ class detail(models.Model):
     # 10 skills
     skills = models.CharField(max_length=100)
 
-    # radio field
-    CHOICES = ((0, 'Select:'), (1, 'I am a working professional'), (2, 'I am a fresher'), (3, 'I am a student'))
-    experience = models.IntegerField(choices=CHOICES, default=0)
+    # radio field)
+    professional = models.BooleanField(default=False)
+    fresher = models.BooleanField(default=False)
+    student = models.BooleanField(default=True)
 
     # on the web
     linkdin = models.CharField(max_length=30)

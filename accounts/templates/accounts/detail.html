@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!--<link rel="stylesheet" href="style.css" />-->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style1.css' %}">
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -30,22 +31,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  {% load static %}
-<!-- css-->
-<link rel="stylesheet" type="text/css" href="{% static 'accounts/css/intlTelInput.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'accounts/css/style.css' %}">
-
-<!-- js -->
-
-<link rel="stylesheet" type="text/css" href="{% static 'accounts/js/intlTelInput.js' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'accounts/js/intlTelInput.min.js' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'accounts/js/utils.js' %}">
-  
   </head>
   <body>
     <div class="row">
       <div class="illus-1 col-md-4">
-        <!-- <img src="Group 245.svg" class="illus-img" /> -->
+        <!-- <img src="{% static 'accounts/img/Group 245.svg' %}" class="illus-img" /> -->
         <svg
           class="illus-img"
           xmlns="http://www.w3.org/2000/svg"
@@ -1203,105 +1193,51 @@
             <div class="tags">
               <ul class="tag-list">
                 <li>
-                  <input
-                    type="checkbox"
-                    name="tag"
-                    id="checkboxOne"
-                    value="Accounting"
-                  /><label for="checkboxOne">Accounting</label>
+                  {{ form.accounting }}
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    name="tag"
-                    id="checkboxTwo"
-                    value="Consulting"
-                    checked
-                  /><label for="checkboxTwo">Consulting</label>
+                  {{ form.consulting }}
+                  <label for="checkboxTwo">Consulting</label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    id="checkboxThree"
-                    name="tag"
-                    value="Creative/Design"
-                    checked
-                  /><label for="checkboxThree">Creative/Design</label>
+                  {{ form.creativeDesign }}
+                  <label for="checkboxThree">Creative/Design</label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    id="checkboxFour"
-                    name="tag"
-                    value="Engineering"
-                  /><label for="checkboxFour">Engineering</label>
+                  {{ form.engineering }}
+                  <label for="checkboxFour">Engineering</label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    id="checkboxFive"
-                    name="tag"
-                    value="Finance"
-                  /><label for="checkboxFive">Finance</label>
+                  {{ form.finance }}
+                  <label for="checkboxFive">Finance</label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    name="tag"
-                    id="checkboxSix"
-                    value="Legal"
-                    checked
-                  /><label for="checkboxSix">Legal</label>
+                  {{ form.legal }}
+                  <label for="checkboxSix">Legal</label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    id="checkboxSeven"
-                    name="tag"
-                    value="Marketing"
-                  /><label for="checkboxSeven">Marketing</label>
+                  {{ form.marketing }}
+                  <label for="checkboxSeven">Marketing</label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    id="checkboxEight"
-                    name="tag"
-                    value="Nursing"
-                  /><label for="checkboxEight">Nursing</label>
+                  {{ form.nursing }}
+                  <label for="checkboxEight">Nursing</label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    name="tag"
-                    id="checkboxNine"
-                    value="Operations"
-                  /><label for="checkboxNine">Operations</label>
+                  {{ form.operations }}
+                  <label for="checkboxNine">Operations</label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    id="checkboxTen"
-                    name="tag"
-                    value="Research"
-                  /><label for="checkboxTen">Research</label>
+                  {{ form.research }}
+                  <label for="checkboxTen">Research</label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    name="tag"
-                    id="checkboxEleven"
-                    value="Sales/Business Development"
-                  /><label for="checkboxEleven"
-                    >Sales/Business Development</label
-                  >
+                  {{ form.SalesDevelopment }}
+                  <label for="checkboxEleven">Sales/Business Development</label>
                 </li>
                 <li>
-                  <input
-                    type="checkbox"
-                    id="checkboxTwelve"
-                    name="tag"
-                    value="Software Engineering"
-                  /><label for="checkboxTwelve">Software Engineering</label>
+                  {{ form.SoftwareEngg }}
+                  <label for="checkboxTwelve">Software Engineering</label>
                 </li>
               </ul>
             </div>
@@ -1312,37 +1248,21 @@
             <div class="form-part col-md-8">
               <p>Add your preferred roles:</p>
               <div class="roles">
-                <input id="form-tags-1" name="tags-1" type="text" value="" />
+                {{ form.roles }}
               </div>
             </div>
             <div class="form-part col-md-8">
               <p>Add up to 10 skills (e.g, HTML, Java-Script).</p>
-              <input id="form-tags-3" name="tags-3" type="text" value="" />
+              {{ form.skills }}
             </div>
             <div class="form-part col-md-8">
-              <p>Which describes you the best?</p>
-              <input
-                type="radio"
-                id="professional"
-                name="work-type"
-                value="professional"
-              />
-              <label for="professional">I am a working professional </label
-              ><br />
-              <input
-                type="radio"
-                id="fresher"
-                name="work-type"
-                value="fresher"
-              />
-              <label for="fresher">I am a fresher</label><br />
-              <input
-                type="radio"
-                id="student"
-                name="work-type"
-                value="student"
-              />
-              <label for="fresher">I am a student</label><br />
+              <p>Which describes you the best?
+                  {{ form.professional }}
+                  <label for="professional">I am a working professional </label><br />
+                  {{ form.fresher }}
+                  <label for="fresher">I am a fresher</label><br />
+                  {{ form.student }}
+                  <label for="student">I am a student</label><br />
             </div>
           </div>
 
@@ -1362,7 +1282,7 @@
                     ><i class="fa fa-weixin"></i
                   ></span>
 
-                  <span class="social"><img src="LINE_APP.png" /></span>
+                  <span class="social"><img src="{% static 'accounts/img/LINE_APP.png' %}" /></span>
 
                   <span class="social" id="dribbble-id"
                     ><i class="fa fa-dribbble"></i
@@ -1372,63 +1292,33 @@
                     ><i class="fa fa-link"></i
                   ></span>
                 </div>
-                <div class="col-lg-6 social-input-div" id="newLinkedin">
-                  <input
-                    type="url"
-                    class="social-input form-control"
-                    name="linkedin"
-                    placeholder="LinkedIn URL.."
-                  />
+				<div class="col-lg-6 social-input-div" id="newLinkedin">
+                  {{ form.linkdin }}
                 </div>
                 <div class="col-lg-6 social-input-div" id="newGithub">
-                  <input
-                    type="url"
-                    class="social-input form-control"
-                    name="github"
-                    placeholder="GitHub URL.."
-                  />
+                  {{ form.github }}
                 </div>
                 <div class="col-lg-6 social-input-div" id="newWechat">
-                  <input
-                    type="text"
-                    class="social-input form-control"
-                    name="wechat"
-                    placeholder="WeChat ID.."
-                  />
+                  {{ form.weChat }}
                 </div>
                 <div class="col-lg-6 social-input-div" id="newLine">
-                  <input
-                    type="text"
-                    class="social-input form-control"
-                    name="line"
-                    placeholder="Line ID.."
-                  />
+                  {{ form.lineID }}
                 </div>
                 <div class="col-lg-6 social-input-div" id="newDribble">
-                  <input
-                    type="url"
-                    class="social-input form-control"
-                    name="dribbble"
-                    placeholder="Dribbble URL.."
-                  />
+                  {{ form.dribble }}
                 </div>
                 <div class="col-lg-6 social-input-div" id="newOther">
-                  <input
-                    type="text"
-                    class="social-input form-control"
-                    name="portfolio"
-                    placeholder="Portfolio URL.."
-                  />
+                  {{ form.portfolio }}
                 </div>
               </div>
             </div>
           </div>
           <div class="approve-section">
             <div class="form-part col-md-12">
-              <input type="checkbox" name="ShareCom" />
+              {{ form.sharecom }}
               <span>Share my profile with companies.</span>
               <br />
-              <input type="checkbox" name="opportunities" />
+              {{ form.opportunity }}
               <span>Let companies reach out to me for new opportunities.</span>
             </div>
           </div>
@@ -1440,7 +1330,7 @@
         </form>
       </div>
       <div class="illus-2 col-md-1">
-        <img src="Group 246.svg" class="illus-img" />
+        <img src="{% static 'accounts/img/Group 246.svg' %}" class="illus-img" />
       </div>
     </div>
 
