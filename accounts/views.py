@@ -20,6 +20,9 @@ class RegView(TemplateView):
             post.user = request.user
             post.save()
             return redirect('/account/')
+        else:
+            args = {'error': 'Enter mobile without space', 'erlink': '/account/register'}
+            return render(request, 'accounts/regerror.html', args)
 
 O = RegView()
 
@@ -49,7 +52,7 @@ class Detail(TemplateView):
         form = ProfileForm2(request.POST)
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.user2 = request.user
+            instance.user = request.user
             instance.save()
 
             return redirect('/account/company-url/')

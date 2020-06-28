@@ -1182,7 +1182,8 @@
         </div>
       </div>
       <div class="option col-md-7">
-        <form>
+        <form method='post'>
+          {% csrf_token %}
           <!-- job section -->
           <div class="job-section">
             <h2>What's your dream job?</h2>
@@ -1194,6 +1195,7 @@
               <ul class="tag-list">
                 <li>
                   {{ form.accounting }}
+                  <label for="checkboxTwo">Accounting</label>
                 </li>
                 <li>
                   {{ form.consulting }}
@@ -1256,13 +1258,11 @@
               {{ form.skills }}
             </div>
             <div class="form-part col-md-8">
-              <p>Which describes you the best?
-                  {{ form.professional }}
-                  <label for="professional">I am a working professional </label><br />
-                  {{ form.fresher }}
-                  <label for="fresher">I am a fresher</label><br />
-                  {{ form.student }}
-                  <label for="student">I am a student</label><br />
+                <p>Which describes you the best?</p>
+                {% for radio in form.experience %}
+                    {{ radio.tag }}
+                    <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label><br />
+                {% endfor %}
             </div>
           </div>
 

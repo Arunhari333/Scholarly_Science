@@ -51,9 +51,8 @@ class detail(models.Model):
     skills = models.CharField(max_length=100)
 
     # radio field)
-    professional = models.BooleanField(default=False)
-    fresher = models.BooleanField(default=False)
-    student = models.BooleanField(default=True)
+    CHOICES = ((1, 'I am a working professional'), (2, 'I am a fresher'), (3, 'I am a student'))
+    experience = models.IntegerField(choices=CHOICES, default=0)
 
     # on the web
     linkdin = models.CharField(max_length=30)

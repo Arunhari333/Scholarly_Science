@@ -26,11 +26,15 @@ class ProfileForm1(forms.ModelForm):
         js = ('accounts/js/intlTelInput.js', 'accounts/js/intlTelInput.min.js', 'accounts/js/utils.js')
 
 class ProfileForm2(forms.ModelForm):
+    CHOICES = ((1, 'I am a working professional'), (2, 'I am a fresher'), (3, 'I am a student'))
+    experience = forms.ChoiceField(choices=CHOICES,
+                                   widget=forms.RadioSelect(attrs={'type': "radio",
+                                                                   'id': "fresher", 'name': 'work-type'}))
     class Meta:
         model = detail
         fields = ('accounting', 'consulting', 'creativeDesign', 'engineering', 'finance', 'legal', 'marketing',
                   'nursing', 'operations', 'research', 'SalesDevelopment', 'SoftwareEngg', 'roles',
-                  'skills', 'professional', 'fresher', 'student', 'linkdin', 'github', 'weChat', 'lineID', 'dribble',
+                  'skills', 'experience', 'linkdin', 'github', 'weChat', 'lineID', 'dribble',
                   'portfolio', 'sharecom', 'opportunity')
         widgets = {
             'accounting': forms.CheckboxInput(attrs={'type': "checkbox", 'name': "tag1", 'id': "checkboxOne"}),
@@ -47,9 +51,6 @@ class ProfileForm2(forms.ModelForm):
             'SoftwareEngg': forms.CheckboxInput(attrs={'type': 'checkbox', 'name': 'tag12', 'id': 'checkboxTwelve'}),
             'roles': forms.TextInput(attrs={'id': 'form-tags-1', 'name': 'tags-1'}),
             'skills': forms.TextInput(attrs={'id': "form-tags-3", 'name': "tags-3"}),
-            'professional': forms.CheckboxInput(attrs={'type': "radio", 'id': "fresher", 'name': 'work-type'}),
-            'fresher': forms.CheckboxInput(attrs={'type': "radio", 'id': "fresher", 'name': 'work-type'}),
-            'student': forms.CheckboxInput(attrs={'type': "radio", 'id': "fresher", 'name': 'work-type'}),
             'linkdin': forms.TextInput(attrs={'type': "url", 'class': "social-input form-control", 'name': "linkedin",
                                               'placeholder': "LinkedIn URL.."}),
             'github': forms.TextInput(attrs={'type': "url", 'class': "social-input form-control", 'name': "github",
