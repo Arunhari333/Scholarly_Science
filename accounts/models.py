@@ -55,12 +55,12 @@ class detail(models.Model):
     experience = models.IntegerField(choices=CHOICES, default=0)
 
     # on the web
-    linkdin = models.CharField(max_length=30)
-    github = models.CharField(max_length=30)
-    weChat = models.CharField(max_length=30)
-    lineID = models.CharField(max_length=30)
-    dribble = models.CharField(max_length=30)
-    portfolio = models.CharField(max_length=30)
+    linkdin = models.CharField(max_length=30, blank=True, null=True)
+    github = models.CharField(max_length=30, blank=True, null=True)
+    weChat = models.CharField(max_length=30, blank=True, null=True)
+    lineID = models.CharField(max_length=30, blank=True, null=True)
+    dribble = models.CharField(max_length=30, blank=True, null=True)
+    portfolio = models.CharField(max_length=30, blank=True, null=True)
 
     # share profile
     sharecom = models.BooleanField()

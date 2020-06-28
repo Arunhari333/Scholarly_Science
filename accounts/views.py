@@ -21,7 +21,15 @@ class RegView(TemplateView):
             post.save()
             return redirect('/account/')
         else:
-            args = {'error': 'Enter mobile without space', 'erlink': '/account/register'}
+            error = 'Error'
+            Mobile = str(form.cleaned_data['Mobile'])
+            if not Mobile.isnumeric():
+                error = 'Enter proper mobile number (Without Space)'
+            elif len(Mobile) != 10:
+                error = 'Enter a 10 digit mobile number'
+            else:
+                error = 'Enter proper email id'
+            args = {'error': error, 'erlink': '/account'}
             return render(request, 'accounts/regerror.html', args)
 
 O = RegView()
@@ -45,8 +53,14 @@ class Detail(TemplateView):
     template_name = 'accounts/detail.html'
 
     def get(self, request):
-        form = ProfileForm2()
-        return render(request, self.template_name, {'form': form})
+        if register.objects.filter(user=request.user).exists():
+            if detail.objects.filter(user=request.user).exists():
+                return redirect('/account/')
+            else:
+                form = ProfileForm2()
+                return render(request, self.template_name, {'form': form})
+        else:
+            return redirect('/account/')
 
     def post(self, request):
         form = ProfileForm2(request.POST)
