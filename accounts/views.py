@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from accounts.models import User, register, detail
 from django.views.generic import TemplateView
+from django.contrib import messages
 
 # Create your views here.
 class RegView(TemplateView):
@@ -21,19 +22,21 @@ class RegView(TemplateView):
             post.save()
             return redirect('/account/')
         else:
-            error = 'Error'
-            Mobile = str(form.cleaned_data['Mobile'])
-            if not Mobile.isnumeric():
-                error = 'Enter proper mobile number (Without Space)'
-            elif len(Mobile) != 10:
-                error = 'Enter a 10 digit mobile number'
-            else:
-                error = 'Enter proper email id'
-            args = {'error': error, 'erlink': '/account'}
-            return render(request, 'accounts/regerror.html', args)
+            try:
+                Mobile = form.cleaned_data['Mobile']
+            except:
+                messages.error(request, 'Enter proper mobile number (Without Space)')
+            try:
+                Email = form.cleaned_data['Email']
+            except:
+                messages.error(request, 'Enter proper email id')
+            if not messages:
+                messages.error(request, 'Enter proper email id and mobile number')
+            return render(request, self.template_name, {'form': form})
 
 O = RegView()
 
+@login_required
 def Profile(request):
     if request.user.is_authenticated:
         if register.objects.filter(user=request.user).exists():
@@ -49,7 +52,7 @@ def Profile(request):
     else:
         pass
 
-class Detail(TemplateView):
+class Detail(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/detail.html'
 
     def get(self, request):
@@ -71,3 +74,9 @@ class Detail(TemplateView):
 
             return redirect('/account/company-url/')
 
+@login_required
+def company_page(request):
+    if register.objects.filter(user=request.user).exists() and detail.objects.filter(user=request.user).exists():
+        return render(request, 'accounts/company-page.html')
+    else:
+        return redirect('/account/')

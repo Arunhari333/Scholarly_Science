@@ -28,8 +28,7 @@ class ProfileForm1(forms.ModelForm):
 class ProfileForm2(forms.ModelForm):
     CHOICES = ((1, 'I am a working professional'), (2, 'I am a fresher'), (3, 'I am a student'))
     experience = forms.ChoiceField(choices=CHOICES,
-                                   widget=forms.RadioSelect(attrs={'type': "radio",
-                                                                   'id': "fresher", 'name': 'work-type'}))
+                                   widget=forms.RadioSelect(attrs={'type': "radio", 'name': 'work-type'}))
     class Meta:
         model = detail
         fields = ('accounting', 'consulting', 'creativeDesign', 'engineering', 'finance', 'legal', 'marketing',
